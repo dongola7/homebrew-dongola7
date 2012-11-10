@@ -17,7 +17,8 @@ class Tclreadline < Formula
     system "autoreconf -fvi"
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}", "--mandir=#{man}"
+                          "--prefix=#{prefix}", "--mandir=#{man}",
+                          "--with-tcl=#{HOMEBREW_PREFIX}/lib"
 
     system "make install"
   end

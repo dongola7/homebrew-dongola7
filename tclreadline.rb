@@ -6,7 +6,6 @@ class Tclreadline < Formula
   sha1 '3b44f92ce1921ebccebab9b44d7cda6992cf8923'
 
   depends_on 'readline'
-  depends_on 'homebrew/dupes/tcl'
   depends_on 'autoconf' => :build
   depends_on 'automake' => :build
   depends_on 'libtool' => :build
@@ -16,10 +15,13 @@ class Tclreadline < Formula
     system "autoreconf -fvi"
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}", "--mandir=#{man}",
-                          "--with-tcl=#{HOMEBREW_PREFIX}/lib"
+                          "--prefix=#{prefix}", "--mandir=#{man}"
 
     system "make install"
-  end
 
+    ohai "The system Tcl installation does not, by default, include #{HOMEBREW_PREFIX}/lib"
+    ohai "in the package search path (auto_path variable). Please append"
+    ohai "#{HOMEBREW_PREFIX}/lib to the TCLLIBPATH environment variable to ensure"
+    ohai "Tcl is able to locate the tclreadline package."
+  end
 end

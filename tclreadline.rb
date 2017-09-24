@@ -3,7 +3,7 @@ require 'formula'
 class Tclreadline < Formula
   homepage 'http://tclreadline.sourceforge.net'
   url 'http://downloads.sourceforge.net/project/tclreadline/tclreadline/tclreadline-2.1.0/tclreadline-2.1.0.tar.gz'
-  sha1 '3b44f92ce1921ebccebab9b44d7cda6992cf8923'
+  sha256 'e4bd772bf567591530c3401a8c5d2107fb87efc5096a7c4411ef31d91f89d557'
 
   depends_on 'readline'
   depends_on 'autoconf' => :build

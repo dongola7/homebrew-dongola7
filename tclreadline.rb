@@ -13,6 +13,8 @@ class Tclreadline < Formula
   def install
     # Need to execute autoreconf as per notes on http://wiki.tcl.tk/5632
     system "autoreconf -fvi"
+    system "egrep -v '#define (FREE|MALLOC)' tclreadline.c | sed 's/MALLOC/malloc/; s/FREE/free/' > tclreadline.c.new"
+    system "mv -f tclreadline.c.new tclreadline.c"
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}", "--mandir=#{man}"
